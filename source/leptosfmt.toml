@@ -9,4 +9,4 @@ closing_tag_style = "Preserve" # "Preserve", "SelfClosing" or "NonSelfClosing"
 # Attribute values can be formatted by custom formatters
 # Every attribute name may only select one formatter (this might change later on)
 # [attr_values]
-# class = "Tailwind" # "Tailwind" is the only attribute value formatter available for now
+class = "Tailwind" # "Tailwind" is the only attribute value formatter available for now
