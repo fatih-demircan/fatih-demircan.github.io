@@ -1,11 +1,9 @@
 use leptos::prelude::*;
+use leptos_meta::provide_meta_context;
 
 fn main() {
     leptos::mount::mount_to_body(|| {
-        view! {
-            <span>"Soon to be updated"</span>
-            <br />
-            <span>"- Fatih Demircan"</span>
-        }
+        provide_meta_context();
+        view! { <div>"Test"</div> }
     })
 }
