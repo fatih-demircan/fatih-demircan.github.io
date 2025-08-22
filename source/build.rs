@@ -5,7 +5,7 @@ use std::io::Write;
 
 fn main() {
     let mut files: BTreeMap<String, BTreeMap<String, String>> = BTreeMap::new();
-    for f in fs::read_dir("public\\logos")
+    for f in fs::read_dir("public/logos")
         .unwrap()
         .into_iter()
         .map(|f| f.unwrap().path())
@@ -27,7 +27,7 @@ fn main() {
     }
 
     let json = serde_json::to_string_pretty(&files).unwrap();
-    let mut file = fs::File::create("public\\logos.json").unwrap();
+    let mut file = fs::File::create("public/logos.json").unwrap();
     file.write_all(json.as_bytes()).unwrap();
-    println!("cargo:rerun-if-changed=public\\logos");
+    println!("cargo:rerun-if-changed=public/logos");
 }

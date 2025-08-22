@@ -1,8 +1,5 @@
 name: Release to Github Pages
 
-env:
-  RUST_BACKTRACE: 1
-
 on:
   push:
     branches: [main]
