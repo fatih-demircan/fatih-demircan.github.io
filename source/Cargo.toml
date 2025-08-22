@@ -3,6 +3,11 @@ name = "source"
 version = "0.1.0"
 edition = "2024"
 
+[build-dependencies]
+serde_json = "1.0.143"
+
 [dependencies]
 leptos = { version = "0.8.6", features = ["csr"] }
 leptos_meta = "0.8.5"
+gloo-net = { version = "0.6.0", features = ["json"] }
+console_error_panic_hook = "0.1.7"
