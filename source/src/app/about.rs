@@ -1,19 +1,10 @@
 use super::*;
 
 #[component]
-fn Paragraph(children: Children) -> impl IntoView {
-    view! { <div class="text-justify indent-6 sm:indent-12">{children()}</div> }
-}
-
-#[component]
 pub fn About() -> impl IntoView {
     view! {
-        <Card title="About".to_string()>
-            <Paragraph>
-                "I'm a mechanical engineer - who also holds a degree in economics - with
-                a passion for programming."
-            </Paragraph>
-            <Paragraph>
+        <Card title="About Me".to_string()>
+            <div class="text-justify indent-6 text-base-content/70">
                 "After high school, I initially chose to study industrial engineering but
                 opted for economics at the University of Cologne. However, driven by my
                 passion for technology, I decided to pursue engineering as a career. I
@@ -23,11 +14,7 @@ pub fn About() -> impl IntoView {
                 mechatronics. This allowed me to combine traditional engineering with my
                 passion for programming, giving me a broader perspective and enabling me
                 to move beyond siloed thinking."
-            </Paragraph>
-            <Paragraph>
-                "In case you have interesting projects or potential business inquiries,
-                feel free to contact me."
-            </Paragraph>
+            </div>
         </Card>
     }
 }

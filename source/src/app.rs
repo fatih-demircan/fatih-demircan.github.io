@@ -2,10 +2,12 @@ use super::*;
 
 mod about;
 mod contact;
+mod portfolio;
 mod skills;
 
 pub use about::About;
 pub use contact::Contact;
+pub use portfolio::Portfolio;
 pub use skills::Skills;
 
 #[component]

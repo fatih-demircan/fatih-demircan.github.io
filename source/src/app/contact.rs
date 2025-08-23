@@ -4,17 +4,9 @@ use super::*;
 pub fn Contact() -> impl IntoView {
     view! {
         <Card title="Contact".to_string()>
-            <article class="text-center">
-                // <img
-                // class="mt-3 h-5 aspect-auto justify-self-center"
-                // src=mail
-                // alt="mail"
-                // />
-                <p class="pt-6 text-xs sm:text-sm">
-                    "*the address is embedded as an image in order to avoid misuse
-                    through webscraping!"
-                </p>
-            </article>
+            <div class="pt-6 text-justify indent-6 text-base-content/70">
+                "In case you have interesting projects or potential business inquiries, feel free to contact me. Contact details will be provided very soon."
+            </div>
         </Card>
     }
 }
