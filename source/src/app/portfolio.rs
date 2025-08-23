@@ -3,19 +3,6 @@ use leptos::{ev::MouseEvent, html::Div, tachys::dom::event_target};
 use web_sys::HtmlDivElement;
 
 #[component]
-fn Placeholder() -> impl IntoView {
-    view! {
-        <div class="w-full flex flex-col gap-2">
-            <div class="skeleton h-32 w-full"></div>
-            <div class="skeleton h-4 w-1/2"></div>
-            <div class="skeleton h-4 w-full"></div>
-            <div class="skeleton h-4 w-full"></div>
-            <div class="skeleton h-4 w-full"></div>
-        </div>
-    }
-}
-
-#[component]
 fn Slide(children: Children, title: String) -> impl IntoView {
     view! {
         <div class="carousel-item box-border w-full">
@@ -121,11 +108,11 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
 pub fn Portfolio() -> impl IntoView {
     view! {
         <Card title="Portfolio".to_string()>
-            <Carousel length=5>
+            <Carousel length=4>
                 <Slide title="AHRS Module".to_string()>
                     <article class="text-justify">
                         <img
-                            class="rounded-box w-full sm:w-[40%] float-none sm:float-left mb-2 sm:mr-2"
+                            class="rounded-box w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
                             src="public/fig/ahrs_board.webp"
                             alt="ahrs_board"
                         />
@@ -140,18 +127,43 @@ pub fn Portfolio() -> impl IntoView {
                         </p>
                     </article>
                 </Slide>
-                {move || {
-                    (0..4)
-                        .into_iter()
-                        .map(|_| {
-                            view! {
-                                <Slide title=format!("Soon to be updated")>
-                                    <Placeholder />
-                                </Slide>
-                            }
-                        })
-                        .collect_view()
-                }}
+                <Slide title="Cellular Automaton".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="rounded-box w-full float-none sm:float-left mb-2 sm:mr-2"
+                            src="public/fig/fhp_gui.png"
+                            alt="fhp_gui"
+                        />
+                        <p>
+                            "This small application was coded initially as part of a student project. It is a Lattice gas automaton with a hexagonal grid (model introduced by Uriel Frisch, Brosl Hasslacher and Yves Pomeau in 1986), simulating a flow around a NACA-Profile in a tunnel. Further enhancements are going to be done soon!"
+                        </p>
+                    </article>
+                </Slide>
+                <Slide title="RegRS - Rust-based Python package".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="rounded-box w-full float-none sm:float-left mb-2 sm:mr-2"
+                            src="public/fig/regrs_summary.png"
+                            alt="regrs_summary"
+                        />
+                        <p>
+                            "Computing the predicted R² by iteratively leaving one row from, exog. and endog. data and computing the error based on the left out data row. And since each iteration step is independent it is very much suitable to be parallilized. Hence, I wrote a corresponding function in Rust and compiled in to a .whl-File so that it can be easily used in Python."
+                        </p>
+                    </article>
+                </Slide>
+                <Slide title="2D Heatflux Sim".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="rounded-box w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
+                            src="public/fig/heatflux_gui.png"
+                            alt="heatflux_gui"
+                        />
+                        <p>
+                            "This 2D heat conduction simulation was created in the course 'Object
+                            -oriented simulation methods in Thermodynamics and Fluid Dynamics' (Institute of Thermodynamics, TU Braunschweig)."
+                        </p>
+                    </article>
+                </Slide>
             </Carousel>
         </Card>
     }
