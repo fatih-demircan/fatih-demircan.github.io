@@ -3,6 +3,19 @@ use leptos::{ev::MouseEvent, html::Div, tachys::dom::event_target};
 use web_sys::HtmlDivElement;
 
 #[component]
+fn Placeholder() -> impl IntoView {
+    view! {
+        <div class="w-full flex flex-col gap-2">
+            <div class="skeleton h-32 w-full"></div>
+            <div class="skeleton h-4 w-1/2"></div>
+            <div class="skeleton h-4 w-full"></div>
+            <div class="skeleton h-4 w-full"></div>
+            <div class="skeleton h-4 w-full"></div>
+        </div>
+    }
+}
+
+#[component]
 fn Slide(children: Children, title: String) -> impl IntoView {
     view! {
         <div class="carousel-item box-border w-full">
@@ -82,7 +95,7 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
                 <svg
                     viewBox="0 -960 960 960"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="size-full fill-base-content"
+                    class="size-full fill-base-content/70"
                 >
                     <path d="M560-280 360-480l200-200v400Z" />
                 </svg>
@@ -95,7 +108,7 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
                 <svg
                     viewBox="0 -960 960 960"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="size-full fill-base-content"
+                    class="size-full fill-base-content/70"
                 >
                     <path d="M400-280v-400l200 200-200 200Z" />
                 </svg>
@@ -105,29 +118,34 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
 }
 
 #[component]
-fn Placeholder() -> impl IntoView {
-    view! {
-        <div class="w-full flex flex-col gap-2">
-            <div class="skeleton h-32 w-full"></div>
-            <div class="skeleton h-4 w-1/2"></div>
-            <div class="skeleton h-4 w-full"></div>
-            <div class="skeleton h-4 w-full"></div>
-            <div class="skeleton h-4 w-full"></div>
-        </div>
-    }
-}
-
-#[component]
 pub fn Portfolio() -> impl IntoView {
     view! {
         <Card title="Portfolio".to_string()>
             <Carousel length=5>
+                <Slide title="AHRS Module".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="rounded-box w-full sm:w-[40%] float-none sm:float-left mb-2 sm:mr-2"
+                            src="public/fig/ahrs_board.webp"
+                            alt="ahrs_board"
+                        />
+                        <p>
+                            "I've designed an AHRS module (Attitude Heading Reference
+                             System), also integrating a GNSS chip as well as a pressure
+                             sensor. My work covers the design of the PCB as well as the
+                             corresponding code. The PCB was designed using KiCad whereas
+                             the embedded code makes use the Rust crate Embassy. The goal
+                             is to utilize this in future projects, primarily for a
+                             drone."
+                        </p>
+                    </article>
+                </Slide>
                 {move || {
-                    (1..=5)
+                    (0..4)
                         .into_iter()
-                        .map(|i| {
+                        .map(|_| {
                             view! {
-                                <Slide title=format!("Test {i}")>
+                                <Slide title=format!("Soon to be updated")>
                                     <Placeholder />
                                 </Slide>
                             }
