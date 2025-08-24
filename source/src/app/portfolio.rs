@@ -112,7 +112,7 @@ pub fn Portfolio() -> impl IntoView {
                 <Slide title="AHRS Module".to_string()>
                     <article class="text-justify">
                         <img
-                            class="rounded-box w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
+                            class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
                             src="public/fig/ahrs_board.webp"
                             alt="ahrs_board"
                         />
@@ -130,7 +130,7 @@ pub fn Portfolio() -> impl IntoView {
                 <Slide title="Cellular Automaton".to_string()>
                     <article class="text-justify">
                         <img
-                            class="rounded-box w-full float-none sm:float-left mb-2 sm:mr-2"
+                            class="w-full float-none sm:float-left mb-2 sm:mr-2"
                             src="public/fig/fhp_gui.png"
                             alt="fhp_gui"
                         />
@@ -142,7 +142,7 @@ pub fn Portfolio() -> impl IntoView {
                 <Slide title="RegRS - Rust-based Python package".to_string()>
                     <article class="text-justify">
                         <img
-                            class="rounded-box w-full float-none sm:float-left mb-2 sm:mr-2"
+                            class="w-full float-none sm:float-left mb-2 sm:mr-2"
                             src="public/fig/regrs_summary.png"
                             alt="regrs_summary"
                         />
@@ -154,7 +154,7 @@ pub fn Portfolio() -> impl IntoView {
                 <Slide title="2D Heatflux Sim".to_string()>
                     <article class="text-justify">
                         <img
-                            class="rounded-box w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
+                            class="w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
                             src="public/fig/heatflux_gui.png"
                             alt="heatflux_gui"
                         />
