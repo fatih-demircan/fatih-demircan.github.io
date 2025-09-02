@@ -108,7 +108,27 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
 pub fn Portfolio() -> impl IntoView {
     view! {
         <Card title="Portfolio".to_string()>
-            <Carousel length=4>
+            <Carousel length=5>
+                <Slide title="Android App - RAgent".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="w-[50%] sm:w-[15%] float-right mb-2 sm:ml-2 p-1 sm:p-0"
+                            src="public/fig/ragent-app/02.png"
+                            alt="ragent-app_02"
+                        />
+                        <img
+                            class="w-[50%] sm:w-[15%] float-right mb-2 sm:ml-2 p-1 sm:p-0"
+                            src="public/fig/ragent-app/01.png"
+                            alt="ragent-app_01"
+                        />
+                        <p>
+                            "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, the .apk-files can be downloaded "
+                            <a class="link" href="https://github.com/fatih-demircan/assets">
+                                here
+                            </a>"."
+                        </p>
+                    </article>
+                </Slide>
                 <Slide title="AHRS Module".to_string()>
                     <article class="text-justify">
                         <img
