@@ -106,21 +106,22 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
 
 #[component]
 pub fn Portfolio() -> impl IntoView {
+    let modal_one: NodeRef<leptos::html::Dialog> = NodeRef::new();
     view! {
+        <CarouselOne modal_one=modal_one />
         <Card title="Portfolio".to_string()>
             <Carousel length=5>
                 <Slide title="Android App - RAgent".to_string()>
                     <article class="text-justify">
-                        <img
-                            class="w-[50%] sm:w-[15%] float-right mb-2 sm:ml-2 p-1 sm:p-0"
-                            src="public/fig/ragent-app/02.png"
-                            alt="ragent-app_02"
-                        />
-                        <img
-                            class="w-[50%] sm:w-[15%] float-right mb-2 sm:ml-2 p-1 sm:p-0"
-                            src="public/fig/ragent-app/01.png"
-                            alt="ragent-app_01"
-                        />
+                        <button
+                            on:click=move |_| {
+                                let _ = modal_one.get().unwrap().show_modal();
+                            }
+                            class="w-full sm:w-[30%] float-right grid grid-cols-2 gap-1 mb-2 sm:ml-2"
+                        >
+                            <img src="public/fig/ragent-app/01.png" alt="ragent-app_01" />
+                            <img src="public/fig/ragent-app/02.png" alt="ragent-app_02" />
+                        </button>
                         <p>
                             "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, the .apk-files can be downloaded "
                             <a class="link" href="https://github.com/fatih-demircan/assets">
@@ -186,5 +187,43 @@ pub fn Portfolio() -> impl IntoView {
                 </Slide>
             </Carousel>
         </Card>
+    }
+}
+
+#[component]
+fn CarouselOne(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
+    view! {
+        <dialog node_ref=modal_one class="modal">
+            <div class="modal-box bg-transparent shadow-none">
+                <button
+                    on:click=move |_| {
+                        let _ = modal_one.get().unwrap().close();
+                    }
+                    class="badge rounded-full p-0 aspect-square absolute right-0 top-0"
+                >
+                    X
+                </button>
+                <div class="carousel carousel-center max-w-2xl space-x-4">
+                    <For
+                        each=move || (1..=7).into_iter()
+                        key=|idx| idx.clone()
+                        children=move |idx| {
+                            view! {
+                                <div class="carousel-item">
+                                    <img
+                                        class="w-60"
+                                        src=format!("public/fig/ragent-app/0{idx}.png")
+                                        alt=format!("ragent-app_0{idx}")
+                                    />
+                                </div>
+                            }
+                        }
+                    />
+                </div>
+            </div>
+            <form method="dialog" class="modal-backdrop p-0">
+                <button>close</button>
+            </form>
+        </dialog>
     }
 }
