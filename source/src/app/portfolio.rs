@@ -194,14 +194,20 @@ pub fn Portfolio() -> impl IntoView {
 fn CarouselOne(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
     view! {
         <dialog node_ref=modal_one class="modal">
-            <div class="modal-box bg-transparent shadow-none">
+            <div class="modal-box bg-transparent px-0 mx-0 shadow-none">
                 <button
+                    class="badge rounded-full p-0 leading-none aspect-square absolute right-0 top-0"
                     on:click=move |_| {
                         let _ = modal_one.get().unwrap().close();
                     }
-                    class="badge rounded-full p-0 aspect-square absolute right-0 top-0"
                 >
-                    X
+                    <svg
+                        class="fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 -960 960 960"
+                    >
+                        <path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                    </svg>
                 </button>
                 <div class="carousel carousel-center max-w-2xl space-x-4">
                     <For
@@ -212,7 +218,7 @@ fn CarouselOne(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
                                 <div class="carousel-item">
                                     <img
                                         class="w-60"
-                                        src=format!("public/fig/ragent-app/0{idx}.png")
+                                        src=format!("public/fig/ragent-app/0{idx}.webp")
                                         alt=format!("ragent-app_0{idx}")
                                     />
                                 </div>
@@ -221,9 +227,6 @@ fn CarouselOne(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
                     />
                 </div>
             </div>
-            <form method="dialog" class="modal-backdrop p-0">
-                <button>close</button>
-            </form>
         </dialog>
     }
 }
