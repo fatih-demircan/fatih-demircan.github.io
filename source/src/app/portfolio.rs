@@ -119,8 +119,8 @@ pub fn Portfolio() -> impl IntoView {
                             }
                             class="w-full sm:w-[30%] float-right grid grid-cols-2 gap-1 mb-2 sm:ml-2"
                         >
-                            <img src="public/fig/ragent-app/01.png" alt="ragent-app_01" />
-                            <img src="public/fig/ragent-app/02.png" alt="ragent-app_02" />
+                            <img src="public/fig/ragent-app/01.webp" alt="ragent-app_01" />
+                            <img src="public/fig/ragent-app/02.webp" alt="ragent-app_02" />
                         </button>
                         <p>
                             "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, the .apk-files can be downloaded "
