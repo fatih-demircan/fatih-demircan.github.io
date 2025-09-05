@@ -45,7 +45,7 @@ jobs:
         run: cd ./source; wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.18.4/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
 
       - name: Update wasm-bindgen-cli version
-        run: cd ./source; cargo install -f wasm-bindgen-cli --version 0.2.100
+        run: cd ./source; cargo install -f wasm-bindgen-cli
 
       - name: Build with Trunk
         run: cd ./source; ./trunk build --release
