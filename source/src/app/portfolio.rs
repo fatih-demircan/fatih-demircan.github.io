@@ -123,9 +123,9 @@ pub fn Portfolio() -> impl IntoView {
                             <img src="public/fig/ragent-app/02.webp" alt="ragent-app_02" />
                         </button>
                         <p>
-                            "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, the .apk-files can be downloaded "
+                            "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, this is the link to the "
                             <a class="link" href="https://github.com/fatih-demircan/assets">
-                                here
+                                ".apk-files"
                             </a>"."
                         </p>
                     </article>

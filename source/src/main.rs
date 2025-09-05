@@ -26,7 +26,7 @@ fn main() {
                         <Contact />
                     </div>
                     <div class="my-3 badge badge-neutral p-0 px-3">
-                        "Made with" <img src="public/fig/leptos.svg" class="h-5 aspect-auto" />
+                        "Made with" <img src="public/fig/leptos.svg" class="h-5 aspect-auto" alt="leptos_logo" />
                     </div>
                     <div class="my-3 mb-12 text-xs">"© 2025 - Fatih Demircan"</div>
                 </div>
