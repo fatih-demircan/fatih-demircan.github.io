@@ -39,20 +39,30 @@ fn Li(title: String, entries: BTreeMap<String, String>) -> impl IntoView {
 pub fn Skills() -> impl IntoView {
     let logos = LocalResource::new(|| fetch_logos());
     view! {
-        <Card title="What I Use".to_string()>
-            <ul>
-                {move || {
-                    let result = logos.get().unwrap_or_default();
-                    let app = result.get("app").unwrap_or(&BTreeMap::new()).clone();
-                    let lang = result.get("lang").unwrap_or(&BTreeMap::new()).clone();
-                    let pkg = result.get("pkg").unwrap_or(&BTreeMap::new()).clone();
+        <Card title="What I Use"
+            .to_string()>
+            {move || match logos.get() {
+                None => view! { <p>"Loading..."</p> }.into_any(),
+                Some(data) => {
                     view! {
-                        <Li title="Applications".to_string() entries=app />
-                        <Li title="Languages".to_string() entries=lang />
-                        <Li title="Packages & Frameworks".to_string() entries=pkg />
+                        <ul>
+                            <Li
+                                title="Applications".to_string()
+                                entries=data.get("app").unwrap().clone()
+                            />
+                            <Li
+                                title="Languages".to_string()
+                                entries=data.get("lang").unwrap().clone()
+                            />
+                            <Li
+                                title="Packages & Frameworks".to_string()
+                                entries=data.get("pkg").unwrap().clone()
+                            />
+                        </ul>
                     }
-                }}
-            </ul>
+                        .into_any()
+                }
+            }}
         </Card>
     }
 }

@@ -64,7 +64,7 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
                 {children()}
             </div>
             <div class="absolute w-full bottom-0 translate-y-1/2 flex gap-1 sm:gap-3 justify-center">
-                <For each=move || (0..length) key=|x| x.clone() let(x)>
+                <For each=move || 0..length key=|x| x.clone() let(x)>
                     <button
                         value=x
                         aria-label="slide"
@@ -110,7 +110,7 @@ pub fn Portfolio() -> impl IntoView {
     view! {
         <CarouselOne modal_one=modal_one />
         <Card title="Portfolio".to_string()>
-            <Carousel length=5>
+            <Carousel length=6>
                 <Slide title="Android App - RAgent".to_string()>
                     <article class="text-justify">
                         <button
@@ -123,14 +123,14 @@ pub fn Portfolio() -> impl IntoView {
                             <img src="public/fig/ragent-app/02.webp" alt="ragent-app_02" />
                         </button>
                         <p>
-                            "Details on this app will be provided soon. Since it is just a dummy app, no core functionalities were implemented. However, if there is interest in testing it out, this is the link to the "
+                            "The job of a ramp agent is to coordinate the complete turnaround of an aircraft. A major part of this role involves tracking the start and end times of each operation, such as deboarding, refueling, boarding, and others. In addition, the ramp agent must keep track of cumulative passenger numbers per section, as well as the loading of baggage and cargo in the respective holds, since these figures affect the aircraft’s center of gravity and are therefore essential for the cockpit crew to set the trim. This app is intended as a dummy design to demonstrate what a suitable digital counterpart to the currently paper-intensive workflow might look like. "
                             <a class="link" href="https://github.com/fatih-demircan/assets">
-                                ".apk-files"
+                                "[Link to the .apk-files]"
                             </a>"."
                         </p>
                     </article>
                 </Slide>
-                <Slide title="AHRS Module".to_string()>
+                <Slide title="AHRS-Module".to_string()>
                     <article class="text-justify">
                         <img
                             class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
@@ -138,13 +138,19 @@ pub fn Portfolio() -> impl IntoView {
                             alt="ahrs_board"
                         />
                         <p>
-                            "I've designed an AHRS module (Attitude Heading Reference
-                             System), also integrating a GNSS chip as well as a pressure
-                             sensor. My work covers the design of the PCB as well as the
-                             corresponding code. The PCB was designed using KiCad whereas
-                             the embedded code makes use the Rust crate Embassy. The goal
-                             is to utilize this in future projects, primarily for a
-                             drone."
+                            "I have developed an AHRS (Attitude and Heading Reference System) module that integrates a GNSS receiver and a pressure sensor. My work encompasses both the PCB design and the accompanying embedded software. The PCB was created using KiCad, while the firmware is built with the Rust Embassy framework. The system is intended for use in future projects - primarily in an unmanned aerial vehicle - where precise attitude and positional data are essential."
+                        </p>
+                    </article>
+                </Slide>
+                <Slide title="LoRa-Module".to_string()>
+                    <article class="text-justify">
+                        <img
+                            class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
+                            src="public/fig/lora_board.webp"
+                            alt="ahrs_board"
+                        />
+                        <p>
+                            "In addition to the AHRS board, I also designed a LoRa board utilizing the EBYTE E22-400MM22S transceiver, which offers a range of up to 7 km. The reason for designing a separate module is to evaluate different RF transceivers and explore the trade-off between bandwidth and range."
                         </p>
                     </article>
                 </Slide>
