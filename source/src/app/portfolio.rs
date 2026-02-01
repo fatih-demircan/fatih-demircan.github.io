@@ -1,105 +1,13 @@
 use super::*;
-use leptos::{ev::MouseEvent, html::Div, tachys::dom::event_target};
-use web_sys::HtmlDivElement;
 
 #[component]
-fn Slide(children: Children, title: String) -> impl IntoView {
+fn PortfolioElement(children: Children, title: String) -> impl IntoView {
     view! {
-        <div class="carousel-item box-border w-full">
-            <div class="card-sm grid grid-cols-1 w-full">
-                <div class="card-body">
-                    <div class="card-title">{title}</div>
-                    {children()}
-                </div>
-            </div>
-        </div>
-    }
-}
-
-#[component]
-fn Carousel(children: Children, length: i32) -> impl IntoView {
-    let div_ref: NodeRef<Div> = NodeRef::new();
-    let (pos, set_pos) = signal(0);
-
-    let _scroll = move |new_pos: f64| {
-        let div = div_ref.get().unwrap();
-        let x = (new_pos * (div.scroll_width() - div.client_width()) as f64) / (length - 1) as f64;
-        div.scroll_to_with_x_and_y(x, 0.);
-    };
-
-    let scroll_to = move |ev: MouseEvent| {
-        let new_pos = event_target_value(&ev).parse::<f64>().unwrap();
-        _scroll(new_pos);
-    };
-
-    let scroll_left = move |_| {
-        if pos.get() == 0 {
-            _scroll((length - 1) as f64)
-        } else {
-            _scroll((pos.get() - 1) as f64)
-        }
-    };
-    let scroll_right = move |_| {
-        if pos.get() == length - 1 {
-            _scroll(0.)
-        } else {
-            _scroll((pos.get() + 1) as f64)
-        }
-    };
-
-    let onscroll = move |event| {
-        let div = event_target::<HtmlDivElement>(&event);
-        let a = div.scroll_left() as f32; // actual position for scrollLeft
-        let b = (div.scroll_width() - div.client_width()) as f32; // max. value for scrollLeft
-        *set_pos.write() = ((a / b) * (length as f32 - 1.)).round() as i32;
-    };
-
-    view! {
-        <div class="flex-1 w-full relative">
-            <div
-                node_ref=div_ref
-                on:scroll=onscroll
-                class="w-full carousel overflow-y-hidden items-start"
-            >
+        <div class="card-sm grid grid-cols-1 w-full">
+            <div class="card-body">
+                <div class="card-title">{title}</div>
                 {children()}
             </div>
-            <div class="absolute w-full bottom-0 translate-y-1/2 flex gap-1 sm:gap-3 justify-center">
-                <For each=move || 0..length key=|x| x.clone() let(x)>
-                    <button
-                        value=x
-                        aria-label="slide"
-                        on:click=scroll_to
-                        class="btn btn-circle size-3"
-                        class=("bg-base-content/70", move || x == pos.get())
-                    ></button>
-                </For>
-            </div>
-            <button
-                aria-label="scrollLeft"
-                class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 size-6"
-                on:click=scroll_left
-            >
-                <svg
-                    viewBox="0 -960 960 960"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="size-full fill-base-content/70"
-                >
-                    <path d="M560-280 360-480l200-200v400Z" />
-                </svg>
-            </button>
-            <button
-                aria-label="scrollRight"
-                class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 size-6"
-                on:click=scroll_right
-            >
-                <svg
-                    viewBox="0 -960 960 960"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="size-full fill-base-content/70"
-                >
-                    <path d="M400-280v-400l200 200-200 200Z" />
-                </svg>
-            </button>
         </div>
     }
 }
@@ -108,96 +16,82 @@ fn Carousel(children: Children, length: i32) -> impl IntoView {
 pub fn Portfolio() -> impl IntoView {
     let modal_one: NodeRef<leptos::html::Dialog> = NodeRef::new();
     view! {
-        <CarouselOne modal_one=modal_one />
-        <Card title="Portfolio".to_string()>
-            <Carousel length=6>
-                <Slide title="Android App - RAgent".to_string()>
-                    <article class="text-justify">
-                        <button
-                            on:click=move |_| {
-                                let _ = modal_one.get().unwrap().show_modal();
-                            }
-                            class="w-full sm:w-[30%] float-right grid grid-cols-2 gap-1 mb-2 sm:ml-2"
-                        >
-                            <img src="public/fig/ragent-app/01.webp" alt="ragent-app_01" />
-                            <img src="public/fig/ragent-app/02.webp" alt="ragent-app_02" />
-                        </button>
-                        <p>
-                            "The job of a ramp agent is to coordinate the complete turnaround of an aircraft. A major part of this role involves tracking the start and end times of each operation, such as deboarding, refueling, boarding, and others. In addition, the ramp agent must keep track of cumulative passenger numbers per section, as well as the loading of baggage and cargo in the respective holds, since these figures affect the aircraft’s center of gravity and are therefore essential for the cockpit crew to set the trim. This app is intended as a dummy design to demonstrate what a suitable digital counterpart to the currently paper-intensive workflow might look like. "
-                            <a class="link" href="https://github.com/fatih-demircan/assets">
-                                "[Link to the .apk-files]"
-                            </a>"."
-                        </p>
-                    </article>
-                </Slide>
-                <Slide title="AHRS-Module".to_string()>
-                    <article class="text-justify">
-                        <img
-                            class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
-                            src="public/fig/ahrs_board.webp"
-                            alt="ahrs_board"
-                        />
-                        <p>
-                            "I have developed an AHRS (Attitude and Heading Reference System) module that integrates a GNSS receiver and a pressure sensor. My work encompasses both the PCB design and the accompanying embedded software. The PCB was created using KiCad, while the firmware is built with the Rust Embassy framework. The system is intended for use in future projects - primarily in an unmanned aerial vehicle - where precise attitude and positional data are essential."
-                        </p>
-                    </article>
-                </Slide>
-                <Slide title="LoRa-Module".to_string()>
-                    <article class="text-justify">
-                        <img
-                            class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
-                            src="public/fig/lora_board.webp"
-                            alt="ahrs_board"
-                        />
-                        <p>
-                            "In addition to the AHRS board, I also designed a LoRa board utilizing the EBYTE E22-400MM22S transceiver, which offers a range of up to 7 km. The reason for designing a separate module is to evaluate different RF transceivers and explore the trade-off between bandwidth and range."
-                        </p>
-                    </article>
-                </Slide>
-                <Slide title="Cellular Automaton".to_string()>
-                    <article class="text-justify">
-                        <img
-                            class="w-full float-none sm:float-left mb-2 sm:mr-2"
-                            src="public/fig/fhp_gui.png"
-                            alt="fhp_gui"
-                        />
-                        <p>
-                            "This small application was coded initially as part of a student project. It is a Lattice gas automaton with a hexagonal grid (model introduced by Uriel Frisch, Brosl Hasslacher and Yves Pomeau in 1986), simulating a flow around a NACA-Profile in a tunnel. Further enhancements are going to be done soon!"
-                        </p>
-                    </article>
-                </Slide>
-                <Slide title="RegRS - Rust-based Python package".to_string()>
-                    <article class="text-justify">
-                        <img
-                            class="w-full float-none sm:float-left mb-2 sm:mr-2"
-                            src="public/fig/regrs_summary.png"
-                            alt="regrs_summary"
-                        />
-                        <p>
-                            "Computing the predicted R² by iteratively leaving one row from, exog. and endog. data and computing the error based on the left out data row. And since each iteration step is independent it is very much suitable to be parallilized. Hence, I wrote a corresponding function in Rust and compiled in to a .whl-File so that it can be easily used in Python."
-                        </p>
-                    </article>
-                </Slide>
-                <Slide title="2D Heatflux Sim".to_string()>
-                    <article class="text-justify">
-                        <img
-                            class="w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
-                            src="public/fig/heatflux_gui.png"
-                            alt="heatflux_gui"
-                        />
-                        <p>
-                            "This 2D heat conduction simulation was created in the course 'Object
-                            -oriented simulation methods in Thermodynamics and Fluid Dynamics' (Institute of Thermodynamics, TU Braunschweig)."
-                        </p>
-                    </article>
-                </Slide>
-            </Carousel>
+        <ImgCarousel modal_one=modal_one />
+        <Card title="Some examples".to_string()>
+            <PortfolioElement title="Android App - RAgent".to_string()>
+                <article class="text-justify">
+                    <button
+                        on:click=move |_| {
+                            let _ = modal_one.get().unwrap().show_modal();
+                        }
+                        class="w-full sm:w-[30%] float-right grid grid-cols-2 gap-1 mb-2 sm:ml-2"
+                    >
+                        <img src="public/fig/ragent-app/01.webp" alt="ragent-app_01" />
+                        <img src="public/fig/ragent-app/02.webp" alt="ragent-app_02" />
+                    </button>
+                    <p>
+                        "The job of a ramp agent is to coordinate the complete turnaround of an aircraft. A major part of this role involves tracking the start and end times of each operation, such as deboarding, refueling, boarding, and others. In addition, the ramp agent must keep track of cumulative passenger numbers per section, as well as the loading of baggage and cargo in the respective holds, since these figures affect the aircraft’s center of gravity and are therefore essential for the cockpit crew to set the trim. This app is intended as a dummy design to demonstrate what a suitable digital counterpart to the currently paper-intensive workflow might look like. "
+                        <a class="link" href="https://github.com/fatih-demircan/assets">
+                            "[Link to the .apk-files]"
+                        </a>"."
+                    </p>
+                </article>
+            </PortfolioElement>
+            <PortfolioElement title="AHRS-Module".to_string()>
+                <article class="text-justify">
+                    <img
+                        class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
+                        src="public/fig/ahrs_board.webp"
+                        alt="ahrs_board"
+                    />
+                    <p>
+                        "I have developed an AHRS (Attitude and Heading Reference System) module that integrates a GNSS receiver and a pressure sensor. My work encompasses both the PCB design and the accompanying embedded software. The PCB was created using KiCad, while the firmware is built with the Rust Embassy framework. The system is intended for use in future projects - primarily in an unmanned aerial vehicle - where precise attitude and positional data are essential."
+                    </p>
+                </article>
+            </PortfolioElement>
+            <PortfolioElement title="Cellular Automaton".to_string()>
+                <article class="text-justify">
+                    <img
+                        class="w-full float-none sm:float-left mb-2 sm:mr-2"
+                        src="public/fig/fhp_gui.png"
+                        alt="fhp_gui"
+                    />
+                    <p>
+                        "This small application was coded initially as part of a student project. It is a Lattice gas automaton with a hexagonal grid (model introduced by Uriel Frisch, Brosl Hasslacher and Yves Pomeau in 1986), simulating a flow around a NACA-Profile in a tunnel. Further enhancements are going to be done soon!"
+                    </p>
+                </article>
+            </PortfolioElement>
+            <PortfolioElement title="RegRS - Rust-based Python package".to_string()>
+                <article class="text-justify">
+                    <img
+                        class="w-full float-none sm:float-left mb-2 sm:mr-2"
+                        src="public/fig/regrs_summary.png"
+                        alt="regrs_summary"
+                    />
+                    <p>
+                        "Computing the predicted R² by iteratively leaving one row from, exog. and endog. data and computing the error based on the left out data row. And since each iteration step is independent it is very much suitable to be parallilized. Hence, I wrote a corresponding function in Rust and compiled in to a .whl-File so that it can be easily used in Python."
+                    </p>
+                </article>
+            </PortfolioElement>
+            <PortfolioElement title="2D Heatflux Sim".to_string()>
+                <article class="text-justify">
+                    <img
+                        class="w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
+                        src="public/fig/heatflux_gui.png"
+                        alt="heatflux_gui"
+                    />
+                    <p>
+                        "This 2D heat conduction simulation was created in the course 'Object
+                        -oriented simulation methods in Thermodynamics and Fluid Dynamics' (Institute of Thermodynamics, TU Braunschweig)."
+                    </p>
+                </article>
+            </PortfolioElement>
         </Card>
     }
 }
 
 #[component]
-fn CarouselOne(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
+fn ImgCarousel(modal_one: NodeRef<leptos::html::Dialog>) -> impl IntoView {
     view! {
         <dialog node_ref=modal_one class="modal">
             <div class="modal-box bg-transparent px-0 mx-0 shadow-none">
