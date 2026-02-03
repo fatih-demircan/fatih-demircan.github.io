@@ -10,7 +10,7 @@ fn main() {
         view! {
             <main class="flex justify-center font-semibold">
                 <div class="max-w-3xl flex flex-col items-center">
-                    <div class="inline-flex my-6 px-6">
+                    <div class="inline-flex my-6 px-6 w-full">
                         <div>
                             <h1 class="text-4xl">"Fatih Demircan"</h1>
                             <div>
