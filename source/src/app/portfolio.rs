@@ -17,7 +17,7 @@ pub fn Portfolio() -> impl IntoView {
     let modal_one: NodeRef<leptos::html::Dialog> = NodeRef::new();
     view! {
         <ImgCarousel modal_one=modal_one />
-        <Card title="Some examples".to_string()>
+        <Card title="Some previous work".to_string()>
             <PortfolioElement title="Android App - RAgent".to_string()>
                 <article class="text-justify">
                     <button
@@ -40,7 +40,7 @@ pub fn Portfolio() -> impl IntoView {
             <PortfolioElement title="AHRS-Module".to_string()>
                 <article class="text-justify">
                     <img
-                        class="w-full sm:w-[50%] float-none sm:float-left mb-2 sm:mr-2"
+                        class="w-full sm:w-[40%] float-none sm:float-left mb-2 sm:mr-2 rounded-xl"
                         src="public/fig/ahrs_board.webp"
                         alt="ahrs_board"
                     />
@@ -52,7 +52,7 @@ pub fn Portfolio() -> impl IntoView {
             <PortfolioElement title="Cellular Automaton".to_string()>
                 <article class="text-justify">
                     <img
-                        class="w-full float-none sm:float-left mb-2 sm:mr-2"
+                        class="w-full sm:w-[60%] float-none sm:float-right mb-2 sm:ml-2"
                         src="public/fig/fhp_gui.png"
                         alt="fhp_gui"
                     />
@@ -64,7 +64,7 @@ pub fn Portfolio() -> impl IntoView {
             <PortfolioElement title="RegRS - Rust-based Python package".to_string()>
                 <article class="text-justify">
                     <img
-                        class="w-full float-none sm:float-left mb-2 sm:mr-2"
+                        class="w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
                         src="public/fig/regrs_summary.png"
                         alt="regrs_summary"
                     />
@@ -76,7 +76,7 @@ pub fn Portfolio() -> impl IntoView {
             <PortfolioElement title="2D Heatflux Sim".to_string()>
                 <article class="text-justify">
                     <img
-                        class="w-full sm:w-[60%] float-none sm:float-left mb-2 sm:mr-2"
+                        class="w-full sm:w-[60%] float-none sm:float-right mb-2 sm:ml-2"
                         src="public/fig/heatflux_gui.png"
                         alt="heatflux_gui"
                     />

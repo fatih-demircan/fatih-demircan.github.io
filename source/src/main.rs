@@ -9,18 +9,21 @@ fn main() {
         provide_meta_context();
         view! {
             <main class="flex justify-center font-semibold">
-                <div class="max-w-2xl flex flex-col items-center">
-                    <div class="inline-flex mt-6 px-6">
+                <div class="max-w-3xl flex flex-col items-center">
+                    <div class="inline-flex my-6 px-6">
                         <div>
                             <h1 class="text-4xl">"Fatih Demircan"</h1>
                             <div>
-                                "Mechanical engineer - with a degree in economics and
-                                passion for programming."
+                                "Mechanical Engineer / Passion for Tinkering / Economics Undergraduate"
                             </div>
                         </div>
                     </div>
                     <div class="w-full flex flex-col divide-y-1 divide-base-content/10">
-                        <About />
+                        <img
+                            class="w-full rounded-none md:rounded-2xl"
+                            src="public/fig/fd.webp"
+                            alt="me"
+                        />
                         <Portfolio />
                         <Skills />
                         <Contact />
