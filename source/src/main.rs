@@ -26,7 +26,7 @@ fn main() {
                         />
                         <Portfolio />
                         <Skills />
-                    // <Contact />
+                        <Contact />
                     </div>
                     <div class="my-3 badge badge-neutral p-0 px-3">
                         "Made with"
