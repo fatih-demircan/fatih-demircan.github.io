@@ -1,0 +1,33 @@
+{
+  "app": {
+    "Abaqus": "public/logos\\app\\Abaqus.png",
+    "Docker": "public/logos\\app\\Docker.png",
+    "FreeCAD": "public/logos\\app\\FreeCAD.png",
+    "KiCad": "public/logos\\app\\KiCad.png",
+    "PostgreSQL": "public/logos\\app\\PostgreSQL.png",
+    "SolidEdge": "public/logos\\app\\SolidEdge.png"
+  },
+  "lang": {
+    "Python": "public/logos\\lang\\Python.png",
+    "Rust": "public/logos\\lang\\Rust.png",
+    "TypeScript": "public/logos\\lang\\TypeScript.png"
+  },
+  "pkg": {
+    "Actix Web": "public/logos\\pkg\\Actix Web.png",
+    "Diesel": "public/logos\\pkg\\Diesel.png",
+    "Embassy": "public/logos\\pkg\\Embassy.png",
+    "FEniCS": "public/logos\\pkg\\FEniCS.png",
+    "Leptos": "public/logos\\pkg\\Leptos.png",
+    "NumPy": "public/logos\\pkg\\NumPy.png",
+    "Polars": "public/logos\\pkg\\Polars.png",
+    "PyTorch": "public/logos\\pkg\\PyTorch.png",
+    "SQLx": "public/logos\\pkg\\SQLx.png",
+    "Svelte": "public/logos\\pkg\\Svelte.png",
+    "TailwindCSS": "public/logos\\pkg\\TailwindCSS.png",
+    "Tauri": "public/logos\\pkg\\Tauri.png",
+    "daisyUI": "public/logos\\pkg\\daisyUI.png",
+    "matplotlib": "public/logos\\pkg\\matplotlib.png",
+    "ndarray": "public/logos\\pkg\\ndarray.png",
+    "pandas": "public/logos\\pkg\\pandas.png"
+  }
+}
