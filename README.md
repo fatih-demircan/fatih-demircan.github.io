@@ -2,7 +2,7 @@
 
 ```bash
 trunk build --release
-npx gh-pages -d dist
+npx gh-pages -d dist --dotfiles
 ```
 
 ## Previous set-up for Github Actions
