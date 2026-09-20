@@ -1,10 +1,10 @@
 [tools]
 tailwindcss = "4.3.3"
 
-
 [build]
 target = "index.html"
 dist = "dist"
 release = true
-minify = "on_release" # minify HTML/CSS/JS assets
-filehash = true       # cache-busting hashed filenames
+minify = "on_release"
+public_url = "/"        # since Pages source will be a user/repo root now, not a subpath — see note below
+filehash = false
