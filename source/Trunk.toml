@@ -1,2 +1,10 @@
 [tools]
-tailwindcss = "4.1.12"
+tailwindcss = "4.3.3"
+
+
+[build]
+target = "index.html"
+dist = "dist"
+release = true
+minify = "on_release" # minify HTML/CSS/JS assets
+filehash = true       # cache-busting hashed filenames

@@ -11,3 +11,10 @@ leptos = { version = "0.8.6", features = ["csr"] }
 leptos_meta = "0.8.5"
 web-sys = "0.3.77"
 gloo-net = { version = "0.6.0", features = ["json"] }
+
+[profile.release]
+opt-level = "z"     # optimize for size ("s" is a lighter version, "z" is most aggressive)
+lto = true              # link-time optimization, big binary size reduction
+codegen-units = 1       # slower compile, better optimization
+panic = "abort"         # smaller binary, no unwinding tables
+strip = true            # strip debug symbols
