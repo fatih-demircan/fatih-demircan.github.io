@@ -7,6 +7,8 @@ npx gh-pages -d dist --dotfiles
 
 ## Previous set-up for Github Actions
 
+This was previously used to publish the portfolio site. Kept for possible usage in the future.
+
 ```yaml
 name: Release to Github Pages
 

@@ -6,5 +6,5 @@ target = "index.html"
 dist = "dist"
 release = true
 minify = "on_release"
-public_url = "/"        # since Pages source will be a user/repo root now, not a subpath — see note below
+public_url = "/"
 filehash = false
