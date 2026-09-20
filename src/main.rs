@@ -18,7 +18,7 @@ fn main() {
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex flex-col divide-y-1 divide-base-content/10">
+                    <div class="w-full flex flex-col divide-y divide-base-content/10">
                         <img
                             class="w-full rounded-none md:rounded-2xl"
                             src="public/fig/fd.webp"
@@ -26,7 +26,6 @@ fn main() {
                         />
                         <Portfolio />
                         <Skills />
-                        <Contact />
                     </div>
                     <div class="my-3 badge badge-neutral p-0 px-3">
                         "Made with"

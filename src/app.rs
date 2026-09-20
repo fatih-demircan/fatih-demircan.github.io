@@ -4,7 +4,7 @@ mod contact;
 mod portfolio;
 mod skills;
 
-pub use contact::Contact;
+// pub use contact::Contact;
 pub use portfolio::Portfolio;
 pub use skills::Skills;
 
