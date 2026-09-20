@@ -1,4 +1,4 @@
-/source/dist/
-/source/target/
-/source/Cargo.lock
-/source/node_modules
+# /source/dist/
+target/
+Cargo.lock
+node_modules
