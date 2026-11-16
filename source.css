@@ -1,12 +1,32 @@
 @import "tailwindcss";
 @source "./src/**/*.rs";
 @plugin "daisyui" {
-    themes: cupcake --default;
+    themes: silk --default;
 }
 @plugin "daisyui/theme" {
-    name: "cupcake";
+    name: "silk";
     default: true;
     --radius-selector: 0rem;
-    --radius-field: 0.25rem;
-    --radius-box: 0.25rem;
+    --radius-field: 0rem;
+    --radius-box: 0rem;
+}
+@utility neo {
+  --s: var(--color-base-100);
+  border-radius: 0.3rem;
+  background: linear-gradient(145deg,
+    oklch(from var(--s) calc(l - .05) c h),
+    oklch(from var(--s) calc(l + .03) c h));
+  box-shadow:
+    4px 4px 8px oklch(from var(--s) calc(l - .06) c h),
+    -4px -4px 8px oklch(from var(--s) calc(l + .18) c h);
+}
+@utility neo-in {
+  --s: var(--color-base-100);
+  border-radius: 0;
+  background: linear-gradient(145deg,
+    oklch(from var(--s) calc(l + .03) c h),
+    oklch(from var(--s) calc(l - .05) c h));
+  box-shadow:
+    inset 5px 5px 10px oklch(from var(--s) calc(l - .06) c h),
+    inset -5px -5px 10px oklch(from var(--s) calc(l + .18) c h);
 }

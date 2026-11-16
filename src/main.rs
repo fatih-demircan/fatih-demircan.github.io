@@ -7,36 +7,22 @@ use app::*;
 fn main() {
     leptos::mount::mount_to_body(|| {
         provide_meta_context();
+        let year = js_sys::Date::new_0().get_full_year();
         view! {
-            <main class="flex justify-center font-semibold">
-                <div class="max-w-3xl flex flex-col items-center">
-                    <div class="inline-flex my-6 px-6 w-full">
-                        <div>
-                            <h1 class="text-4xl">"Fatih Demircan"</h1>
-                            <div>
-                                "Mechanical Engineer / Passion for Tinkering / Economics Undergraduate"
-                            </div>
+            <main class="flex flex-col font-semibold bg-base-100">
+                <div class="flex flex-col gap-9 py-9 px-3 mx-auto w-full max-w-3xl">
+                    <div class="neo card card-xl">
+                        <div class="p-3 card-body">
+                            <h1 class="text-3xl card-title">"Fatih Demircan"</h1>
+                            "Mechanical Engineer / Economics Undergraduate / Passion for Tinkering"
                         </div>
                     </div>
-                    <div class="w-full flex flex-col divide-y divide-base-content/10">
-                        <img
-                            class="w-full rounded-none md:rounded-2xl"
-                            src="public/fig/fd.webp"
-                            alt="me"
-                        />
-                        <Portfolio />
-                        <Skills />
+                    <Portfolio />
+                    <div class="self-center text-xs">
+                        {format!("© 2025-{year} Fatih Demircan")}
                     </div>
-                    <div class="my-3 badge badge-neutral p-0 px-3">
-                        "Made with"
-                        <img
-                            src="public/fig/leptos.svg"
-                            class="h-5 aspect-auto"
-                            alt="leptos_logo"
-                        />
-                    </div>
-                    <div class="my-3 mb-12 text-xs">"© 2025 - Fatih Demircan"</div>
                 </div>
+                <Imprint />
             </main>
         }
     })
