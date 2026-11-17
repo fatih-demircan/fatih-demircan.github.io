@@ -1,8 +1,8 @@
 use leptos::prelude::*;
 use leptos_meta::provide_meta_context;
 
-mod app;
-use app::*;
+mod components;
+use components::*;
 
 fn main() {
     leptos::mount::mount_to_body(|| {
@@ -10,7 +10,7 @@ fn main() {
         let year = js_sys::Date::new_0().get_full_year();
         view! {
             <main class="flex flex-col font-semibold bg-base-100">
-                <div class="flex flex-col gap-9 py-9 px-3 mx-auto w-full max-w-3xl">
+                <div class="flex flex-col gap-12 p-6 mx-auto w-full max-w-3xl">
                     <div class="neo card card-xl">
                         <div class="p-3 card-body">
                             <h1 class="text-3xl card-title">"Fatih Demircan"</h1>
